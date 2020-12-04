@@ -500,7 +500,7 @@ if (os.path.isfile(infile) == True):
         line = lines[-2]
         #print(line)
         DW1=W1max-float(line.split()[3])
-        line = lines[-LW3-2]
+        line = lines[-LW1-2]
         #print(line)
         DW3=W3max-float(line.split()[2])
 
