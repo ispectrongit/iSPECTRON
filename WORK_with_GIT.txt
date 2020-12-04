@@ -1,0 +1,76 @@
+#clone repository
+git clone https://gitlab.com/cobrammgroup/cobramm.git
+git clone https://gitlab.com/cobrammgroup/prepare_cobramm_input.git
+
+#UPDATING LOCAL REPOSITORY
+#git pull <REMOTE> <name-of-branch> 
+git pull origin master
+
+
+#UPLOADING CHANGES TO THE ONLINE REPOSITORY
+#1. STAGING: once you have modified your local files, you have to tell Git that you want to keep those changes
+git add FILENAME / git rm FILENAME
+#add all changes for commiting (also subfolders)
+git add .
+#HELP: Staging area gives the control to make commit smaller. Just make one logical change in the code, add the changed files to the staging area and finally if the changes are bad then checkout to the previous commit or otherwise commit the changes.It gives the flexibility to split the task into smaller tasks and commit smaller changes. With staging area it is easier to focus in small tasks.It also gives you the offer to take break and forgetting about how much work you have done before taking break. Suppose you need to change three files to make one logical change and you have changed the first file and need a long break until you start making the other changes. At this moment you cannot commit and you want to track which files you are done with so that after coming back you do not need to try to remember how much work have been done. So add the file to the staging area and it will save your work. When you come back just do git diff --staged and check which files you changed and where and start making other changes.
+
+#2. COMMITTING: a set of changes is collected in a "commit", that is created with the command
+git commit -m "Some message" 
+#HELP: STAGE & COMMIT changes are only stored in the local repository.
+
+#3. PUSHING: synchronize the changes with the GitLab repository
+#git push <remote> <name-of-branch>
+git push origin master
+
+
+#WORK WITH DIFFERENT DEVEL VERSIONS
+#BRANCHING: to create a new branch, to work from without affecting the master branch
+#git checkout -b <name-of-branch>
+git checkout -b XMSPT2
+>> Switched to a new branch 'XMSPT2'
+#list all local branches 
+git branch -a
+#switch between branches
+#git checkout <name-of-branch>
+git checkout XMSPT2
+
+#MERGE: merge branch with master
+git checkout XMSPT2
+git merge master
+
+#remove a branch from GIT
+#show which branches can be pruned
+git remote prune origin --dry-run
+#actually prune
+git remote prune origin
+#delete local branch
+git branch -d XMSPT2_test
+#delete local branch even if not merged
+git branch -D XMSPT2_test
+
+
+#KEEPING TRACK OF CHANGES
+#keep track of your last changes
+git status
+#list all versions/commits
+git log --oneline
+#view difference between local unstaged changes and the repository 
+git diff
+#show the difference between two versions/commits 
+git diff cac3860 376a984 
+#diff between local and remote versions
+git diff master origin/master
+#diff between local and remote files
+git diff master:cobramm/layers.py -- cobramm/layers.py
+
+
+#REVERTING CHANGES (not tried yet)
+#1. list all commits
+git log --oneline
+>>44ed127 (HEAD -> master, origin/master, origin/HEAD) Comment routine obsolte routine for GS calculation; this is now done in cobramm.py if required
+>>45cecc8 (Dynamics_in_reduced_space) Delete util/Prepare_cobramm_input_09.2020.pp
+>>545b34f Wigner sampling routine added
+#2. revert a commit locally
+git revert 44ed127 
+#3. synchronize with online repository
+git push origin master 
