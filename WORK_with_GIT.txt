@@ -1,5 +1,5 @@
 #clone repository
-git clone https://gitlab.com/ispectron/ispectron 
+git clone https://gitlab.com/ispectron/ispectron
 
 #UPDATING LOCAL REPOSITORY
 #git pull <REMOTE> <name-of-branch> 
