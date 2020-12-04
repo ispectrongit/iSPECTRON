@@ -1,11 +1,9 @@
 #clone repository
-git clone https://gitlab.com/cobrammgroup/cobramm.git
-git clone https://gitlab.com/cobrammgroup/prepare_cobramm_input.git
+git clone https://gitlab.com/ispectron/ispectron 
 
 #UPDATING LOCAL REPOSITORY
 #git pull <REMOTE> <name-of-branch> 
 git pull origin master
-
 
 #UPLOADING CHANGES TO THE ONLINE REPOSITORY
 #1. STAGING: once you have modified your local files, you have to tell Git that you want to keep those changes
