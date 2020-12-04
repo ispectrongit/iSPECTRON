@@ -1642,7 +1642,8 @@ print("\n********** READ INPUT FILE(S) **********\n")
 # Energies are here assumed to be in cm^-1, dipoles in electron charges times Angstrom (eA)
 energies,dipo,grads,modes,freqs = readlog(InLogFile,args.free)
 # Use normal modes frequency scaling factor if specified by the user.
-freqs *= args.fscale
+for i in range(len(freqs)):
+    freqs[i] *= args.fscale
 
 if len(energies) == 0 or len(dipo) == 0:
     print("No energies and/or no dipoles detected. I will stop.")
